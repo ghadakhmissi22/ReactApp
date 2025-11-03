@@ -1,4 +1,138 @@
-/* 🎬 Global styles */
+
+/* From Uiverse.io by SelfMadeSystem */ 
+.outline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.rect {
+  stroke-dashoffset: 5;
+  stroke-dasharray: 0 0 10 40 10 40;
+  transition: 0.5s;
+  stroke: #fff;
+}
+
+.nav {
+  position: relative;
+  width: 400px;
+  height: 60px;
+}
+
+.container:hover .outline .rect {
+  transition: 999999s;
+  /* Must specify these values here as something *different* just so that the transition works properly */
+  stroke-dashoffset: 1;
+  stroke-dasharray: 0;
+}
+
+.container {
+  position: absolute;
+  inset: 0;
+  background: #bef6;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5em;
+}
+
+.btn {
+  padding: 0.5em 1.5em;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.btn:hover {
+  background: #fff3;
+}
+
+.btn:nth-child(1):hover ~ svg .rect {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 0 2 8 73.3 8 10.7;
+}
+
+.btn:nth-child(2):hover ~ svg .rect {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 0 12.6 9.5 49.3 9.5 31.6;
+}
+
+.btn:nth-child(3):hover ~ svg .rect {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 0 24.5 8.5 27.5 8.5 55.5;
+}
+
+.btn:nth-child(4):hover ~ svg .rect {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 0 34.7 6.9 10.2 6.9 76;
+}
+
+.btn:hover ~ .outline .rect {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 0 0 10 40 10 40;
+  transition: 0.5s !important;
+}
+/* --- Animated Navbar Buttons --- */
+.nav-container {
+  position: relative;
+  width: 400px;
+  height: 60px;
+}
+
+.nav-buttons {
+  position: absolute;
+  inset: 0;
+  background: #bef6;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5em;
+}
+
+.btn {
+  padding: 0.5em 1.5em;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.btn:hover {
+  background: #fff3;
+}
+
+.nav-outline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.rect {
+  stroke: #fff;
+  stroke-dashoffset: 5;
+  stroke-dasharray: 0 0 10 40 10 40;
+  transition: 0.5s;
+}
+
+/* Hover effects by button position */
+.btn:nth-child(1):hover ~ svg .rect {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 0 2 8 73.3 8 10.7;
+}
+.btn:nth-child(2):hover ~ svg .rect {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 0 12.6 9.5 49.3 9.5 31.6;
+}
+.btn:nth-child(3):hover ~ svg .rect {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 0 24.5 8.5 27.5 8.5 55.5;
+}
+.btn:nth-child(4):hover ~ svg .rect {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 0 34.7 6.9 10.2 6.9 76;
+}
+
+/* --- Global Layout --- */
 .App {
   min-height: 100vh;
   transition: all 0.5s ease;
@@ -18,19 +152,15 @@
   color: #212529;
 }
 
-/* 🧭 Header box */
+/* 🧭 Header */
 .header-box {
   border-radius: 10px;
   padding: 20px;
   transition: background-color 0.3s ease;
 }
-
-/* Dark header background */
 .dark-mode .header-box {
   background-color: #1f1f1f;
 }
-
-/* Light header background */
 .light-mode .header-box {
   background-color: #ffffff;
 }
@@ -38,44 +168,30 @@
 /* 🎞️ Movie cards */
 .movie-card {
   height: 100%;
-  min-height: 520px; /* même hauteur pour toutes les cartes */
+  min-height: 520px;
   margin-bottom: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #1e1e1e;
-  border: none;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Hover effect */
 .movie-card:hover {
-    transform: scale(1.12) translateY(-5px);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 6);
-    z-index: 10;
-  /* transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); */
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(255, 0, 150, 0.5);
+  z-index: 10;
 }
 
-
-/* Adjust text color for dark mode */
-.dark-mode .movie-card {
-  background-color: #1f1f1f;
-  color: #fff;
-}
-
-.light-mode .movie-card {
-  background-color: #fff;
-  color: #000;
-}
-/* 🖼️ Images de films — même taille pour toutes */
+/* Image fixe */
 .movie-card img {
-  height: 300px;         /* fixe la hauteur */
-  object-fit: cover;     /* garde le bon cadrage */
+  height: 300px;
+  object-fit: cover;
   border-bottom: 2px solid #444;
 }
 
-/* 📄 Corps du texte aligné en bas */
+/* Corps du texte */
 .movie-card .card-body {
   flex-grow: 1;
   display: flex;
