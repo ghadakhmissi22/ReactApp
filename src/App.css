@@ -1,38 +1,84 @@
+/* 🎬 Global styles */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
+  transition: all 0.5s ease;
+  padding-bottom: 40px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* 🌙 Dark Mode */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* ☀️ Light Mode */
+.light-mode {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* 🧭 Header box */
+.header-box {
+  border-radius: 10px;
+  padding: 20px;
+  transition: background-color 0.3s ease;
+}
+
+/* Dark header background */
+.dark-mode .header-box {
+  background-color: #1f1f1f;
+}
+
+/* Light header background */
+.light-mode .header-box {
+  background-color: #ffffff;
+}
+
+/* 🎞️ Movie cards */
+.movie-card {
+  height: 100%;
+  min-height: 520px; /* même hauteur pour toutes les cartes */
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #1e1e1e;
+  border: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Hover effect */
+.movie-card:hover {
+    transform: scale(1.12) translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 6);
+    z-index: 10;
+  /* transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+/* Adjust text color for dark mode */
+.dark-mode .movie-card {
+  background-color: #1f1f1f;
+  color: #fff;
+}
+
+.light-mode .movie-card {
+  background-color: #fff;
+  color: #000;
+}
+/* 🖼️ Images de films — même taille pour toutes */
+.movie-card img {
+  height: 300px;         /* fixe la hauteur */
+  object-fit: cover;     /* garde le bon cadrage */
+  border-bottom: 2px solid #444;
+}
+
+/* 📄 Corps du texte aligné en bas */
+.movie-card .card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
